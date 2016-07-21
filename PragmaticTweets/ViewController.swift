@@ -8,6 +8,7 @@
 
 import UIKit
 import Social
+import Accounts
 
 let defaultAvatarURL = NSURL(string:
   "https://abs.twimg.com/sticky/default_profile_images/default_profile_6_200x200.png")
@@ -70,6 +71,29 @@ class ViewController: UITableViewController {
   }
   
   func reloadTweets() {
+    let accountStore = ACAccountStore()
+    let twitterAccountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
+    accountStore.requestAccessToAccountsWithType(twitterAccountType, options: nil) {
+      (granted: Bool, error: NSError!) in
+      guard granted else {
+        NSLog("account access not granted")
+        return
+      }
+      NSLog("account access granted")
+      let twitterAccounts = accountStore.accountsWithAccountType(twitterAccountType)
+      guard twitterAccounts.count > 0 else {
+        NSLog("no twitter accounts configured")
+        return
+      }
+      let twitterParams = [
+        "count" : 100
+      ]
+      let twitterAPIURL = NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
+      let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET,
+                              URL: twitterAPIURL, parameters: twitterParams)
+      request.account = twitterAccounts.first as! ACAccount
+      request.performRequestWithHandler(self.handleTwitterData)
+    }
     tableView.reloadData()
   }
   
@@ -92,6 +116,20 @@ class ViewController: UITableViewController {
       cell.avatarImageView.image = UIImage(data: imageData)
     }
     return cell
+  }
+  
+  private func handleTwitterData(data: NSData!, urlResponse: NSHTTPURLResponse!, error: NSError!) {
+    guard let data = data else {
+      NSLog("handleTwitterData() received no data")
+      return
+    }
+    NSLog("handleTwitterData(), \(data.length) bytes")
+    do {
+      let jsonObject = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions([]))
+      NSLog("JSON is:\n\(jsonObject)")
+    } catch let error as NSError {
+      NSLog("JSON error: \(error)")
+    }
   }
 }
 
