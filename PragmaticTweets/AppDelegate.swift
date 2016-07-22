@@ -31,6 +31,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func applicationWillEnterForeground(application: UIApplication) {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+//    guard let url = NSURL(string: "https://api.twitter.com/1.1/users/suggestions.json") else {
+//      return
+//    }
+//    
+//    sendTwitterRequest(url, params: [:]) {
+//      (data, urlResponse, error) in
+//      do {
+//        let jsonObject = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions([]))
+//        NSLog("suggestions JSON: \(jsonObject)")
+//      } catch let error as NSError {
+//        NSLog("JSON error: \(error)")
+//      }
+//    }
   }
 
   func applicationDidBecomeActive(application: UIApplication) {

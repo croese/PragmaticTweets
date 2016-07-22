@@ -13,7 +13,7 @@ import Accounts
 let defaultAvatarURL = NSURL(string:
   "https://abs.twimg.com/sticky/default_profile_images/default_profile_6_200x200.png")
 
-class ViewController: UITableViewController {
+class RootViewController: UITableViewController {
   
   var parsedTweets: [ParsedTweet] = [  ]
   
@@ -22,7 +22,7 @@ class ViewController: UITableViewController {
     // Do any additional setup after loading the view, typically from a nib.
     reloadTweets()
     let refresher = UIRefreshControl()
-    refresher.addTarget(self, action: #selector(ViewController.handleRefresh(_:)), forControlEvents: .ValueChanged)
+    refresher.addTarget(self, action: #selector(RootViewController.handleRefresh(_:)), forControlEvents: .ValueChanged)
     refreshControl = refresher
   }
   
@@ -47,29 +47,15 @@ class ViewController: UITableViewController {
   }
   
   func reloadTweets() {
-    let accountStore = ACAccountStore()
-    let twitterAccountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
-    accountStore.requestAccessToAccountsWithType(twitterAccountType, options: nil) {
-      (granted: Bool, error: NSError!) in
-      guard granted else {
-        NSLog("account access not granted")
-        return
-      }
-      NSLog("account access granted")
-      let twitterAccounts = accountStore.accountsWithAccountType(twitterAccountType)
-      guard twitterAccounts.count > 0 else {
-        NSLog("no twitter accounts configured")
-        return
-      }
-      let twitterParams = [
-        "count" : 100
-      ]
-      let twitterAPIURL = NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
-      let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET,
-                              URL: twitterAPIURL, parameters: twitterParams)
-      request.account = twitterAccounts.first as! ACAccount
-      request.performRequestWithHandler(self.handleTwitterData)
+    let twitterParams = [
+      "count" : "100"
+    ]
+    
+    guard let twitterAPIURL = NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json") else {
+      return
     }
+    
+    sendTwitterRequest(twitterAPIURL, params: twitterParams, completion: handleTwitterData)
     tableView.reloadData()
   }
   

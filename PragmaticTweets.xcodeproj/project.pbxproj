@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		333FB1E81D42A14200E146F8 /* TwitterAPIRequestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333FB1E71D42A14200E146F8 /* TwitterAPIRequestUtilities.swift */; };
 		33A3F6361D3AFFB400DFCD6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A3F6351D3AFFB400DFCD6A /* AppDelegate.swift */; };
-		33A3F6381D3AFFB400DFCD6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A3F6371D3AFFB400DFCD6A /* ViewController.swift */; };
+		33A3F6381D3AFFB400DFCD6A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A3F6371D3AFFB400DFCD6A /* RootViewController.swift */; };
 		33A3F63B1D3AFFB400DFCD6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33A3F6391D3AFFB400DFCD6A /* Main.storyboard */; };
 		33A3F63D1D3AFFB400DFCD6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33A3F63C1D3AFFB400DFCD6A /* Assets.xcassets */; };
 		33A3F6401D3AFFB400DFCD6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33A3F63E1D3AFFB400DFCD6A /* LaunchScreen.storyboard */; };
@@ -36,9 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		333FB1E71D42A14200E146F8 /* TwitterAPIRequestUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAPIRequestUtilities.swift; sourceTree = "<group>"; };
 		33A3F6321D3AFFB400DFCD6A /* PragmaticTweets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PragmaticTweets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A3F6351D3AFFB400DFCD6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		33A3F6371D3AFFB400DFCD6A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		33A3F6371D3AFFB400DFCD6A /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		33A3F63A1D3AFFB400DFCD6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		33A3F63C1D3AFFB400DFCD6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33A3F63F1D3AFFB400DFCD6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,7 +51,7 @@
 		33A3F6511D3AFFB400DFCD6A /* PragmaticTweetsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PragmaticTweetsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A3F6551D3AFFB400DFCD6A /* PragmaticTweetsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PragmaticTweetsUITests.swift; sourceTree = "<group>"; };
 		33A3F6571D3AFFB400DFCD6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		33E2F21C1D3DB11600504AF3 /* ParsedTweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsedTweet.swift; sourceTree = "<group>"; };
+		33E2F21C1D3DB11600504AF3 /* ParsedTweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParsedTweet.swift; path = ../ParsedTweet.swift; sourceTree = "<group>"; };
 		33E2F21E1D3DB76300504AF3 /* ParsedTweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsedTweetCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,10 +80,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		33A3F6291D3AFFB400DFCD6A = {
+		333FB1E51D42A05F00E146F8 /* Root VC */ = {
+			isa = PBXGroup;
+			children = (
+				33A3F6371D3AFFB400DFCD6A /* RootViewController.swift */,
+				33E2F21E1D3DB76300504AF3 /* ParsedTweetCell.swift */,
+			);
+			name = "Root VC";
+			sourceTree = "<group>";
+		};
+		333FB1E61D42A07500E146F8 /* Twitter Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				33E2F21C1D3DB11600504AF3 /* ParsedTweet.swift */,
+				333FB1E71D42A14200E146F8 /* TwitterAPIRequestUtilities.swift */,
+			);
+			name = "Twitter Utilities";
+			sourceTree = "<group>";
+		};
+		33A3F6291D3AFFB400DFCD6A = {
+			isa = PBXGroup;
+			children = (
 				33A3F6341D3AFFB400DFCD6A /* PragmaticTweets */,
 				33A3F6491D3AFFB400DFCD6A /* PragmaticTweetsTests */,
 				33A3F6541D3AFFB400DFCD6A /* PragmaticTweetsUITests */,
@@ -102,13 +121,13 @@
 		33A3F6341D3AFFB400DFCD6A /* PragmaticTweets */ = {
 			isa = PBXGroup;
 			children = (
+				333FB1E61D42A07500E146F8 /* Twitter Utilities */,
+				333FB1E51D42A05F00E146F8 /* Root VC */,
 				33A3F6351D3AFFB400DFCD6A /* AppDelegate.swift */,
-				33A3F6371D3AFFB400DFCD6A /* ViewController.swift */,
 				33A3F6391D3AFFB400DFCD6A /* Main.storyboard */,
 				33A3F63C1D3AFFB400DFCD6A /* Assets.xcassets */,
 				33A3F63E1D3AFFB400DFCD6A /* LaunchScreen.storyboard */,
 				33A3F6411D3AFFB400DFCD6A /* Info.plist */,
-				33E2F21E1D3DB76300504AF3 /* ParsedTweetCell.swift */,
 			);
 			path = PragmaticTweets;
 			sourceTree = "<group>";
@@ -265,9 +284,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				333FB1E81D42A14200E146F8 /* TwitterAPIRequestUtilities.swift in Sources */,
 				33E2F21F1D3DB76300504AF3 /* ParsedTweetCell.swift in Sources */,
 				33E2F21D1D3DB11600504AF3 /* ParsedTweet.swift in Sources */,
-				33A3F6381D3AFFB400DFCD6A /* ViewController.swift in Sources */,
+				33A3F6381D3AFFB400DFCD6A /* RootViewController.swift in Sources */,
 				33A3F6361D3AFFB400DFCD6A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
